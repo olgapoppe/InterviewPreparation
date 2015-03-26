@@ -1,7 +1,5 @@
 package array_string;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,23 +10,23 @@ public class DuplicateTest {
 		
 		// all equal -> false
 		String s1 = "llllllllllllll";
-		assertFalse(Duplicate.areAllCharsUnique(s1));
+		Assert.assertFalse(Duplicate.areAllCharsUnique(s1));
 				
 		// all different -> true
 		String s2 = "anthskg";
-		assertTrue(Duplicate.areAllCharsUnique(s2));		
+		Assert.assertTrue(Duplicate.areAllCharsUnique(s2));		
 			
 		// one duplicate -> false
 		String s3 = "buopthbf";
-		assertFalse(Duplicate.areAllCharsUnique(s3));		
+		Assert.assertFalse(Duplicate.areAllCharsUnique(s3));		
 				
 		// empty string -> true
 		String s4 = "";
-		assertTrue(Duplicate.areAllCharsUnique(s4));	
+		Assert.assertTrue(Duplicate.areAllCharsUnique(s4));	
 				
 		// several duplicates -> false
 		String s5 = "anna";
-		assertFalse(Duplicate.areAllCharsUnique(s5));		
+		Assert.assertFalse(Duplicate.areAllCharsUnique(s5));		
 	}
 	
 	@Test
