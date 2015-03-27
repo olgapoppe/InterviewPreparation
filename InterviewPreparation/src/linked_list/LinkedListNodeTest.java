@@ -4,9 +4,20 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 public class LinkedListNodeTest {
+	
+	@Test
+	public void testdeleteNode() {
+		LinkedListNode n5 = new LinkedListNode(5,null);
+		LinkedListNode n4 = new LinkedListNode(4,n5);
+		LinkedListNode n3 = new LinkedListNode(3,n4);
+		LinkedListNode n2 = new LinkedListNode(2,n3);
+		LinkedListNode n1 = new LinkedListNode(1,n2);		
+		Assert.assertTrue(n1.deleteNode(n3));	
+		Assert.assertFalse(n1.deleteNode(null));
+	}
 
 	@Test
-	public void test() {
+	public void testgetStartOfLoop() {
 		// no loop
 		LinkedListNode n5 = new LinkedListNode(5,null);
 		LinkedListNode n4 = new LinkedListNode(4,n5);

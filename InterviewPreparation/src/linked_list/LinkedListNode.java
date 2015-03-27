@@ -10,12 +10,16 @@ public class LinkedListNode {
 		this.next = n;
 	}
 	
-	public boolean deleteNode () {
-		if (this == null || this.next == null) {
+	/**
+	 * Delete a node in the middle of a single linked list given only access to that node
+	 * @return	boolean indicating whether the node was deleted
+	 */
+	public boolean deleteNode (LinkedListNode n) {
+		if (n==null || n.next == null) {
 			return false;
 		}
-		this.data = this.next.data;
-		this.next = this.next.next;
+		n.data = n.next.data;
+		n.next = n.next.next;				
 		return true;
 	}
 	
@@ -44,6 +48,10 @@ public class LinkedListNode {
 			n2 = n2.next;
 		}
 		return n2;
+	}
+	
+	public boolean equals (LinkedListNode other) {
+		return this.data==other.data && this.next.equals(other.next);
 	}
 	
 	public String toString() {
