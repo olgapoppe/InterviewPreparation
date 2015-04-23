@@ -3,9 +3,7 @@ package ordered_tasks;
 import java.util.HashMap;
 import java.util.ArrayDeque;
 import java.util.Set;
-//import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
-//import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Producer implements Runnable {
