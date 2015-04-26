@@ -1,4 +1,4 @@
-package producer_consumer_pattern;
+package producer_consumer_latch;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CountDownLatch;
