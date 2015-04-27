@@ -2,41 +2,50 @@ package producer_consumer_blockingqueue;
 
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CountDownLatch;
 
 public class Consumer extends Thread {
-		boolean blnExit = false;
-		private final int id;
-		private final BlockingQueue<Long> sharedQueue;
+	boolean done = false;
+	private final int id;
+	private final BlockingQueue<Long> sharedQueue;
+	CountDownLatch secondCountDown;
 
-	public Consumer(final int id, final BlockingQueue<Long> sharedQueue) {
-		this.id = id;
-		this.sharedQueue = sharedQueue;
+	public Consumer(final int i, final BlockingQueue<Long> s, CountDownLatch c) {
+		id = i;
+		sharedQueue = s;
+		secondCountDown = c;
 	}
-
-	public void setExitCondition(final boolean blnDoExit) {
-		blnExit = blnDoExit;
+	
+	public void terminate () {
+		done = true;
 	}
-
+	
 	@Override
 	public void run() {
 		final Random generator = new Random();
 
-		while (!blnExit) {
+		while (!done) {
 			try {
 				if (sharedQueue.size() > 0) {
-					System.out.println("Consumer id:" + id + " sent email " + sharedQueue.take());
+					
+					Long head = sharedQueue.take();
+					System.out.println("Consumer " + id + " consumed " + head);
 
 					// TO BE REMOVED (ONLY SIMULATES RANDOM WORKING TIME)
 					final long start = System.currentTimeMillis();
 					Thread.sleep(generator.nextInt(1000) + 1000);	
-					final long end = System.currentTimeMillis();
+					final long end = System.currentTimeMillis();	
+					
+					secondCountDown.countDown();
+					
 				} else {
+					System.out.println("Consumer " + id + " checked for a new task");
 					Thread.sleep(500);
 				}
 			} catch (final InterruptedException ex) {
 				ex.printStackTrace();
 			}
 		}
-		System.out.println("Consumer " + id + " exiting");
+		System.out.println("Consumer " + id + " is done");
 	}
 }
