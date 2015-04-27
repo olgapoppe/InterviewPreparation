@@ -18,13 +18,8 @@ public class Producer extends Thread {
 				
 				sharedQueue.put(Long.valueOf(i));
 
-			} catch (final InterruptedException ex) {
-				ex.printStackTrace();
-			}
+			} catch (final InterruptedException ex) { ex.printStackTrace(); }
 		}
-		
-		
-		
 		System.out.println("Producer is done");
 	}
 }

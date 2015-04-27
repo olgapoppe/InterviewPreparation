@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CountDownLatch;
 
 public class Consumer extends Thread {
-	boolean done = false;
+	boolean done;
 	private final int id;
 	private final BlockingQueue<Long> sharedQueue;
 	CountDownLatch secondCountDown;
@@ -14,6 +14,7 @@ public class Consumer extends Thread {
 		id = i;
 		sharedQueue = s;
 		secondCountDown = c;
+		done = false;
 	}
 	
 	public void terminate () {
@@ -42,9 +43,7 @@ public class Consumer extends Thread {
 					System.out.println("Consumer " + id + " checked for a new task");
 					Thread.sleep(500);
 				}
-			} catch (final InterruptedException ex) {
-				ex.printStackTrace();
-			}
+			} catch (final InterruptedException ex) { ex.printStackTrace(); }
 		}
 		System.out.println("Consumer " + id + " is done");
 	}
