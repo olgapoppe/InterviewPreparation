@@ -11,7 +11,7 @@ public class LookAndSaySequence {
 		
 		ArrayList<String> results = new ArrayList<String>();
 		
-		for (int i = 1; i<=n; i++) {		
+		for (int i=1; i<=n; i++) {		
 			
 			results.add(current_number);
 			
@@ -22,7 +22,7 @@ public class LookAndSaySequence {
 						
 			while (cursor<current_number.length()) {				
 				
-				if (c==current_number.charAt(cursor)) {					
+				if (c == current_number.charAt(cursor)) {					
 					count++;
 				} else {
 					accumulator += count + "" + c;
