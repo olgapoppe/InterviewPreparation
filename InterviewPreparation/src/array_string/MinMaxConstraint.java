@@ -2,6 +2,7 @@ package array_string;
 
 public class MinMaxConstraint {
 	
+	// Given a sorted array A, find the number of sub-arrays B of A that satisfy the constraint min(B)+max(B)<K
 	public static void main (String [] args) {
 		int [] input = new int [4];
 		input[0] = 1;
